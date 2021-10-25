@@ -1,10 +1,10 @@
 <template>
-    <el-input
+    <el-switch
         v-model="configs.value"
-        :placeholder="configs.placeholder"
         :disabled="configs.disabled"
-        :clearable="configs.clearable"
-    ></el-input>
+        :active-text="configs.activeText"
+        :inactive-text="configs.inactiveText"
+    ></el-switch>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";

@@ -1,17 +1,14 @@
 <script lang="jsx">
-import { defineComponent, h, resolveComponent, ref } from "vue";
-import wtSelect from "./componets/wtSelect.vue";
+import { defineComponent, h, resolveComponent, ref, readonly } from "vue";
 export default defineComponent({
-  components: { wtSelect },
   props: {
     options: { type: Object, default: {} },
   },
   setup(props) {
-    let { options } = props
-    options.element = 'wt-' + options.element
-    console.log(options, '----------')
+    let options = props.options
+    let element = 'wt-' + props.options.element
     return () => (
-      h(resolveComponent(options.element), { configs: options.configs })
+      h(resolveComponent(element), { configs: props.options.configs })
     );
   },
 });

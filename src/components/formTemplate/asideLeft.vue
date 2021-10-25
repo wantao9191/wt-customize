@@ -1,9 +1,12 @@
 <template>
   <div class="aside-left">
-    <div class="items">
-      <div class="item" v-for="(l, i) in list" :key="i" @click="onClick(l)">
-        <span>{{ l.label }}</span>
+    <div class="aside-title">表单项</div>
+    <div class="items-wrap">
+      <div class="items">
+        <div class="item" v-for="(l, i) in list" :key="i" @click="onClick(l)">
+          <div class="label">{{ l.label }}</div>
         </div>
+      </div>
     </div>
   </div>
 </template>
@@ -11,7 +14,7 @@
 import { defineComponent, reactive } from "vue";
 
 export default defineComponent({
-  setup(props,context) {
+  setup(props, context) {
     const list = reactive([
       { label: "多选框", value: "checkbox" },
       { label: "单选框", value: "radio" },
@@ -21,38 +24,49 @@ export default defineComponent({
       { label: "选择器", value: "select" },
       { label: "开关", value: "switch" },
       { label: "评分", value: "rate" },
-      { label: "日期选择", value: "date-picker", type: "" },
-      { label: "日期时间", value: "date-picker", type: "datetime" },
+      { label: "日期选择", value: "date-picker" },
+      { label: "日期时间", value: "date-picker" },
     ]);
-    const onClick=(l)=>{
-      context.emit('onSelect',l)
+    const onClick = (l) => {
+      context.emit('onSelect', l)
     }
-    return { list ,onClick};
+    return { list, onClick };
   },
 });
 </script>
 <style lang="scss" scoped>
 .aside-left {
-  width: 320px;
+  width: 24%;
   height: 100%;
+  .aside-title {
+    text-align: center;
+    font-size: 13px;
+    background: #409eff;
+    margin: 12px 12px 0;
+    padding: 8px;
+    border-radius: 4px;
+    color: #fff;
+  }
   .items {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 12px;
-    > .item {
-      width: calc(50% - 6px) ;
-      font-size: 12px;
-      margin-bottom: 12px;
-      >span {
-        display: inline-block;
-        cursor: pointer;
-        border-radius: 4px;
-        border:1px solid #ddd;
-        padding: 4px 12px;
-        width: 120px;
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+      > .item {
+        width: calc(50% - 6px);
+        font-size: 12px;
+        margin-bottom: 12px;
+        > .label {
+          // display: inline-block;
+          cursor: pointer;
+          border-radius: 4px;
+          border: 1px solid #ddd;
+          padding: 4px 12px;
+          // width: 120px;
+        }
       }
     }
-  }
 }
 </style>

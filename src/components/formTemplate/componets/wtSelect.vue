@@ -1,22 +1,20 @@
 <template>
-    <el-select v-model="value" @chang="onChange" :placeholder="options.placeholder">
-        <el-option v-for="(item,i) in list" :key="i" :label="item.label" :value="item.value"></el-option>
-    </el-select>
+  <el-select
+    v-model="configs.value"
+    :multiple="configs.multiple"
+    :placeholder="configs.placeholder"
+    :disabled="configs.disabled"
+    :clearable="configs.clearable"
+    :filterable="configs.filterable"
+  >
+    <el-option v-for="(item,i) in configs.list" :key="i" :label="item.label" :value="item.value"></el-option>
+  </el-select>
 </template>
 <script lang="ts">
-import { defineComponent, ref, reactive } from 'vue'
+import { defineComponent, ref } from "vue";
 export default defineComponent({
-    props: { configs: { type: Object, default: {} } },
-    setup(props, context) {
-        console.log({ ...props.configs })
-        const { configs } = props
-        const value = ref(props.configs.defaultValue || props.configs.value)
-        const options = reactive({ disabeld: configs.disabled, multiple: configs.multiple, placeholder: configs.placeholder })
-        const list = reactive(props.configs.list)
-        const onChange = (val) => {
-            context.emit('update:value', val)
-        }
-        return { value, onChange, list, options }
-    },
-})
+  props: { configs: { type: Object, default: {} } },
+  setup(props, context) {
+  }
+});
 </script>

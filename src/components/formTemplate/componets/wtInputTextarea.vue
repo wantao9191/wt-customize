@@ -4,6 +4,9 @@
         :placeholder="configs.placeholder"
         :disabled="configs.disabled"
         :clearable="configs.clearable"
+        type="textarea"
+        :rows="configs.rows"
+        :autosize='configs.autosize'
     ></el-input>
 </template>
 <script lang="ts">

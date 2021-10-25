@@ -1,10 +1,14 @@
 <template>
-    <el-input
+    <el-rate
         v-model="configs.value"
-        :placeholder="configs.placeholder"
         :disabled="configs.disabled"
-        :clearable="configs.clearable"
-    ></el-input>
+        :show-score="configs.showScore"
+        :allow-half="configs.allowHalf"
+        score-template="{value} 分"
+        text-color="#ff9900"
+        :texts='configs.texts'
+        :show-text='configs.showText'
+    ></el-rate>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
